@@ -1,0 +1,13 @@
+TheHarvester GUI Notes
+
+-Python Virtual Environments:
+May need to allow users to specify the Python interpreter path. If theHarvester and dependencies are installed in a virtual environment, we need to ensure the application uses that Python interpreter.
+Explore using a virtual environment by default?
+
+-Switched from embedded code to subprocess:
+The Asyncio module is used a lot in theHarvester program. The Asyncio module only works in the main thread and will not work in a worker thread. This means everytime the Python code is ran, the whole app will become unresponsive until the Python script is finished. Using a subprocess will be more cleaner and maintainable while allowing the program to be responsive. Additionally, we will be able to launch multiple calls to theHarvester if we need. (FUTURE FEATURE).
+
+-Specifying the Python Path:
+Try to automate everything as much as possible for ease of use. However, add an advanced option to allow users to specify which Python interpreter they would like to use and refer to that option should there be some type of error regarding a missing interpreter. 
+
+-Consider documentation tools like Doxygen

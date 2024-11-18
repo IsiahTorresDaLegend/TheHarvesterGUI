@@ -1,0 +1,33 @@
+Allowing the User to Specify the Python Path
+
+1. If automatic detection fails or the user wants to use a specific Python interpreter, you can provide an option in the application settings.
+
+    Create a Settings Dialog:
+        Allow users to input the path to the Python interpreter.
+
+    Save the Path:
+        Store the user-specified path in a configuration file or using QSettings.
+
+    Fallback Mechanism:
+        Use the user-specified path if available; otherwise, use the path obtained from CMake.
+
+2. Handling Virtual Environments
+
+    Detect Virtual Environments:
+        If theHarvester is installed in a virtual environment, you might need to activate it before running the script.
+
+    Modify the Process Execution:
+        Instead of directly calling the Python interpreter, you could run a shell script or batch file that activates the virtual environment and runs theHarvester.
+
+3. Cross-Platform Compatibility
+
+    Executable Name Differences:
+        Use Python3_EXECUTABLE from CMake to handle differences in executable names (python, python3, python.exe).
+
+    Path Separators:
+        Use QDir::toNativeSeparators() to ensure paths are correctly formatted for the operating system.
+
+
+-------------------------------------------------------------------------------------------------------------
+
+1. Perhaps we will create a pop up window for the first time the program is ran or when the "run" button is first pressed. It would ask something like, "Use a specific Python interpreter or use the default one?" With a yes and no button, along with additional dialogue that states, "Python interpreter can be changed later in the Advanced tab". afterwards, the decision will be saved in settings and the window will not appear again. 
